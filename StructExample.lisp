@@ -1,0 +1,31 @@
+(defclass StructExample ()
+()
+)
+
+(defmethod example1 ((ex StructExample))
+  (format t "<<example1()>>")
+  (terpri)
+  (defstruct Customer id name age wage active)
+  (setq c1 (make-customer
+      :id 1 :name "foo" :age 10 :wage 100.0 :active nil)
+  )
+  (format t "<<Customer c1 details>>~%")
+  (format t "id = ~a~%" (customer-id c1))
+  (format t "name = ~a~%" (customer-name c1))
+  (format t "age = ~a~%" (customer-age c1))
+  (format t "wage = ~a~%" (customer-wage c1))
+  (format t "active = ~a~%" (customer-active c1))
+  (write c1)
+  (format t "~%")
+  (setf (customer-id c1) 2)
+  (write c1)
+  (format t "~%")
+
+  (setq c2 (make-customer :id 2 :name "bar" :age 20 :wage 200.0 :active t))
+  (write c2)
+  (format t  "~%")
+  )
+
+
+(setq ex (make-instance 'StructExample))
+(example1 ex)
